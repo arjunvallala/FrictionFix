@@ -110,7 +110,6 @@ export class OpenAIProvider implements IAIProvider {
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: `Department: ${params.department}\nQuestion: ${params.question}\nMemories:\n${memoriesText}` }
         ],
-        response_format: { type: 'json_object' },
         temperature: 0.2,
       }),
     });
@@ -126,7 +125,7 @@ export class OpenAIProvider implements IAIProvider {
 }
 
 export class GroqProvider implements IAIProvider {
-  public name = 'Groq (Llama-3.3-70B)';
+  public name = 'Groq (GPT-OSS-120B)';
 
   async generateResponse(params: AIProviderParams): Promise<StructuredAnswer> {
     if (!CONFIG.GROQ_API_KEY) {
@@ -144,12 +143,11 @@ export class GroqProvider implements IAIProvider {
         'Authorization': `Bearer ${CONFIG.GROQ_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: 'openai/gpt-oss-120b',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: `Department: ${params.department}\nQuestion: ${params.question}\nMemories:\n${memoriesText}` }
+          { role: 'user', content: `Department: ${params.department}\nQuestion: "${params.question}"\nMemories:\n${memoriesText}` }
         ],
-        response_format: { type: 'json_object' },
         temperature: 0.2,
       }),
     });
