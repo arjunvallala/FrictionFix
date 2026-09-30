@@ -1,0 +1,592 @@
+{
+  "summary": {
+    "totalSessionsAnalyzed": 34523,
+    "convertedSessions": 18958,
+    "abandonedNoFrictionSessions": 5334,
+    "totalFrictionAbandonedSessions": 10231,
+    "overallFrictionRatePct": 29.6,
+    "departmentFrictionCounts": {
+      "Product": 1982,
+      "Marketing": 2172,
+      "Customer Service": 5140,
+      "Operational Teams": 937
+    }
+  },
+  "departments": {
+    "Product": {
+      "department": "Product",
+      "totalFrictionSessions": 1982,
+      "stepDistribution": {
+        "address": 436,
+        "chat": 343,
+        "repeat_view_3": 176,
+        "repeat_view_5": 163,
+        "view_3": 155,
+        "view_0": 155,
+        "repeat_view_4": 151,
+        "view_4": 136,
+        "view_1": 126,
+        "view_2": 126,
+        "payment": 8,
+        "review": 4,
+        "cart": 3
+      },
+      "secondaryFrictionCounts": {
+        "I_return_refund_friction": 40,
+        "G_coupon_failure": 13,
+        "F_unclear_product_info": 12,
+        "B_hidden_costs": 12,
+        "C_forced_login_long_checkout": 10,
+        "A_payment_otp_failure": 8,
+        "E_price_shock": 7,
+        "H_unresolved_support_bot_failure": 6
+      },
+      "issues": [
+        {
+          "id": "iss-pro-01",
+          "frictionCode": "C_forced_login_long_checkout",
+          "title": "Forced Login & Lengthy Checkout Flow",
+          "affectedSessions": 1155,
+          "percentage": 58.3,
+          "severity": "High",
+          "probableCause": "Mandatory account creation gating users before guest checkout, resulting in high drop-off during multi-step registration.",
+          "suggestedAction": "Implement 1-click Guest Checkout and social OAuth login options.",
+          "stepLocation": "address",
+          "status": "Active"
+        },
+        {
+          "id": "iss-pro-02",
+          "frictionCode": "F_unclear_product_info",
+          "title": "Unclear Product Specifications & Compatibility Info",
+          "affectedSessions": 827,
+          "percentage": 41.7,
+          "severity": "Medium",
+          "probableCause": "Missing technical compatibility matrix and vague size/specs on product detail pages.",
+          "suggestedAction": "Update PDP layout with explicit compatibility badges and interactive size guide.",
+          "stepLocation": "chat",
+          "status": "Active"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tsk-pro-01",
+          "title": "Implement 1-click Guest Checkout and social OAuth login options.",
+          "department": "Product",
+          "assignedRole": "Product Manager",
+          "priority": "High",
+          "targetTimeline": "3 Days",
+          "impactSessions": 1155,
+          "frictionTitle": "Forced Login & Lengthy Checkout Flow",
+          "status": "In Progress"
+        },
+        {
+          "id": "tsk-pro-02",
+          "title": "Update PDP layout with explicit compatibility badges and interactive size guide.",
+          "department": "Product",
+          "assignedRole": "UX Architect",
+          "priority": "Medium",
+          "targetTimeline": "5 Days",
+          "impactSessions": 827,
+          "frictionTitle": "Unclear Product Specifications & Compatibility Info",
+          "status": "Pending"
+        }
+      ],
+      "sampleTraces": [
+        {
+          "sessionId": "80d99717a3bc",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "F_unclear_product_info",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Product"
+        },
+        {
+          "sessionId": "cdc4e1a19fe7",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "F_unclear_product_info",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Product"
+        },
+        {
+          "sessionId": "0e74b7bec60d",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "C_forced_login_long_checkout",
+          "secondaryFriction": "None",
+          "stepLocation": "view_3",
+          "department": "Product"
+        },
+        {
+          "sessionId": "99c9e9ef4b80",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "C_forced_login_long_checkout",
+          "secondaryFriction": "None",
+          "stepLocation": "view_0",
+          "department": "Product"
+        },
+        {
+          "sessionId": "c6a733377932",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "C_forced_login_long_checkout",
+          "secondaryFriction": "None",
+          "stepLocation": "view_3",
+          "department": "Product"
+        },
+        {
+          "sessionId": "b8bc586e04d0",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "F_unclear_product_info",
+          "secondaryFriction": "None",
+          "stepLocation": "repeat_view_4",
+          "department": "Product"
+        },
+        {
+          "sessionId": "6c2289e3eb31",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "F_unclear_product_info",
+          "secondaryFriction": "None",
+          "stepLocation": "repeat_view_3",
+          "department": "Product"
+        },
+        {
+          "sessionId": "1968ca1d7488",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "C_forced_login_long_checkout",
+          "secondaryFriction": "None",
+          "stepLocation": "view_0",
+          "department": "Product"
+        }
+      ]
+    },
+    "Marketing": {
+      "department": "Marketing",
+      "totalFrictionSessions": 2172,
+      "stepDistribution": {
+        "cart": 472,
+        "review": 334,
+        "view_0": 270,
+        "view_2": 267,
+        "view_4": 266,
+        "view_1": 246,
+        "view_3": 244,
+        "payment": 41,
+        "chat": 21,
+        "address": 4,
+        "repeat_view_5": 3,
+        "repeat_view_4": 2,
+        "repeat_view_3": 2
+      },
+      "secondaryFrictionCounts": {
+        "I_return_refund_friction": 48,
+        "H_unresolved_support_bot_failure": 17,
+        "A_payment_otp_failure": 13,
+        "F_unclear_product_info": 11,
+        "B_hidden_costs": 9,
+        "C_forced_login_long_checkout": 7,
+        "E_price_shock": 7,
+        "G_coupon_failure": 4
+      },
+      "issues": [
+        {
+          "id": "iss-mar-01",
+          "frictionCode": "B_hidden_costs",
+          "title": "Unexpected Hidden Costs at Checkout",
+          "affectedSessions": 821,
+          "percentage": 37.8,
+          "severity": "High",
+          "probableCause": "Shipping fees, service surcharges, and taxes added only at final checkout step without prior disclosure.",
+          "suggestedAction": "Display estimated shipping and tax calculations early in cart drawer.",
+          "stepLocation": "review",
+          "status": "Active"
+        },
+        {
+          "id": "iss-mar-02",
+          "frictionCode": "E_price_shock",
+          "title": "Price Discrepancy & Price Shock",
+          "affectedSessions": 659,
+          "percentage": 30.3,
+          "severity": "High",
+          "probableCause": "Mismatch between promotional ad campaign pricing and actual cart total.",
+          "suggestedAction": "Audit ad campaign landing page URLs and synchronize dynamic promo pricing.",
+          "stepLocation": "cart",
+          "status": "Active"
+        },
+        {
+          "id": "iss-mar-03",
+          "frictionCode": "G_coupon_failure",
+          "title": "Coupon & Promo Code Validation Errors",
+          "affectedSessions": 692,
+          "percentage": 31.9,
+          "severity": "Medium",
+          "probableCause": "Expired promo banner codes and unclear discount eligibility conditions.",
+          "suggestedAction": "Implement auto-applying promo codes and clear error messaging for expired coupons.",
+          "stepLocation": "cart",
+          "status": "Active"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tsk-mar-01",
+          "title": "Display estimated shipping and tax calculations early in cart drawer.",
+          "department": "Marketing",
+          "assignedRole": "Marketing Lead",
+          "priority": "High",
+          "targetTimeline": "2 Days",
+          "impactSessions": 821,
+          "frictionTitle": "Unexpected Hidden Costs at Checkout",
+          "status": "In Progress"
+        },
+        {
+          "id": "tsk-mar-02",
+          "title": "Audit ad campaign landing page URLs and synchronize dynamic promo pricing.",
+          "department": "Marketing",
+          "assignedRole": "Growth Marketer",
+          "priority": "High",
+          "targetTimeline": "24 Hours",
+          "impactSessions": 659,
+          "frictionTitle": "Price Discrepancy & Price Shock",
+          "status": "In Progress"
+        },
+        {
+          "id": "tsk-mar-03",
+          "title": "Implement auto-applying promo codes and clear error messaging for expired coupons.",
+          "department": "Marketing",
+          "assignedRole": "Campaign Specialist",
+          "priority": "Medium",
+          "targetTimeline": "2 Days",
+          "impactSessions": 692,
+          "frictionTitle": "Coupon & Promo Code Validation Errors",
+          "status": "Pending"
+        }
+      ],
+      "sampleTraces": [
+        {
+          "sessionId": "1dc56154efdd",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "E_price_shock",
+          "secondaryFriction": "None",
+          "stepLocation": "view_3",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "4b56968aa47a",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "G_coupon_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "cart",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "6df914224f3e",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "G_coupon_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "view_2",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "addeeb9f9c9f",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "B_hidden_costs",
+          "secondaryFriction": "None",
+          "stepLocation": "view_3",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "637c72ea6035",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "E_price_shock",
+          "secondaryFriction": "None",
+          "stepLocation": "view_4",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "257ad58b13cf",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "B_hidden_costs",
+          "secondaryFriction": "None",
+          "stepLocation": "view_1",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "93ed4270c1eb",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "G_coupon_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "cart",
+          "department": "Marketing"
+        },
+        {
+          "sessionId": "cc3fcf641e30",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "G_coupon_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "view_4",
+          "department": "Marketing"
+        }
+      ]
+    },
+    "Customer Service": {
+      "department": "Customer Service",
+      "totalFrictionSessions": 5140,
+      "stepDistribution": {
+        "cart": 1291,
+        "chat": 1037,
+        "view_3": 519,
+        "view_2": 506,
+        "view_1": 492,
+        "view_0": 458,
+        "view_4": 455,
+        "payment": 348,
+        "review": 12,
+        "address": 10,
+        "repeat_view_4": 7,
+        "repeat_view_3": 3,
+        "repeat_view_5": 2
+      },
+      "secondaryFrictionCounts": {
+        "I_return_refund_friction": 107,
+        "H_unresolved_support_bot_failure": 27,
+        "C_forced_login_long_checkout": 25,
+        "B_hidden_costs": 23,
+        "G_coupon_failure": 21,
+        "A_payment_otp_failure": 20,
+        "F_unclear_product_info": 19,
+        "E_price_shock": 15
+      },
+      "issues": [
+        {
+          "id": "iss-cus-01",
+          "frictionCode": "H_unresolved_support_bot_failure",
+          "title": "AI Support Bot Escalation Failure & Infinite Loops",
+          "affectedSessions": 1022,
+          "percentage": 19.9,
+          "severity": "Critical",
+          "probableCause": "Automated chat bot unable to resolve complex queries and failing to hand off to human agents.",
+          "suggestedAction": "Add instant human agent escalation fallback macro when bot confidence drops below 70%.",
+          "stepLocation": "chat",
+          "status": "Active"
+        },
+        {
+          "id": "iss-cus-02",
+          "frictionCode": "I_return_refund_friction",
+          "title": "Post-Purchase Return & Refund Request Friction",
+          "affectedSessions": 4118,
+          "percentage": 80.1,
+          "severity": "High",
+          "probableCause": "Complex return authorization workflow requiring manual support ticket approval.",
+          "suggestedAction": "Deploy self-service automated return portal with instant prepaid shipping label generation.",
+          "stepLocation": "cart",
+          "status": "Active"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tsk-cus-01",
+          "title": "Add instant human agent escalation fallback macro when bot confidence drops below 70%.",
+          "department": "Customer Service",
+          "assignedRole": "Customer Support Lead",
+          "priority": "Urgent",
+          "targetTimeline": "24 Hours",
+          "impactSessions": 1022,
+          "frictionTitle": "AI Support Bot Escalation Failure & Infinite Loops",
+          "status": "In Progress"
+        },
+        {
+          "id": "tsk-cus-02",
+          "title": "Deploy self-service automated return portal with instant prepaid shipping label generation.",
+          "department": "Customer Service",
+          "assignedRole": "Customer Operations Manager",
+          "priority": "High",
+          "targetTimeline": "4 Days",
+          "impactSessions": 4118,
+          "frictionTitle": "Post-Purchase Return & Refund Request Friction",
+          "status": "In Progress"
+        }
+      ],
+      "sampleTraces": [
+        {
+          "sessionId": "afef04082625",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "H_unresolved_support_bot_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "7ecf83ef83ac",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "H_unresolved_support_bot_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "221a38bcf066",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "I_return_refund_friction",
+          "secondaryFriction": "None",
+          "stepLocation": "view_4",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "3e8b495b5533",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "H_unresolved_support_bot_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "c51ac114b886",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "H_unresolved_support_bot_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "chat",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "a7f9fc85e773",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "I_return_refund_friction",
+          "secondaryFriction": "None",
+          "stepLocation": "view_1",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "c1b2cda13f85",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "I_return_refund_friction",
+          "secondaryFriction": "None",
+          "stepLocation": "view_1",
+          "department": "Customer Service"
+        },
+        {
+          "sessionId": "5a89e114a816",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "I_return_refund_friction",
+          "secondaryFriction": "I_return_refund_friction",
+          "stepLocation": "cart",
+          "department": "Customer Service"
+        }
+      ]
+    },
+    "Operational Teams": {
+      "department": "Operational Teams",
+      "totalFrictionSessions": 937,
+      "stepDistribution": {
+        "payment": 921,
+        "chat": 7,
+        "view_0": 3,
+        "address": 2,
+        "review": 1,
+        "view_4": 1,
+        "view_1": 1,
+        "repeat_view_4": 1
+      },
+      "secondaryFrictionCounts": {
+        "I_return_refund_friction": 12,
+        "A_payment_otp_failure": 9,
+        "C_forced_login_long_checkout": 6,
+        "H_unresolved_support_bot_failure": 4,
+        "F_unclear_product_info": 4,
+        "G_coupon_failure": 3,
+        "E_price_shock": 3,
+        "B_hidden_costs": 2
+      },
+      "issues": [
+        {
+          "id": "iss-ope-01",
+          "frictionCode": "A_payment_otp_failure",
+          "title": "Payment Gateway Handshake & Bank OTP Timeout",
+          "affectedSessions": 937,
+          "percentage": 100.0,
+          "severity": "Critical",
+          "probableCause": "Bank 3D-Secure OTP verification delays and primary payment gateway handshake timeouts.",
+          "suggestedAction": "Integrate secondary payment gateway auto-routing and increase OTP timeout window.",
+          "stepLocation": "payment",
+          "status": "Active"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "tsk-ope-01",
+          "title": "Integrate secondary payment gateway auto-routing and increase OTP timeout window.",
+          "department": "Operational Teams",
+          "assignedRole": "DevOps & Infrastructure Lead",
+          "priority": "Urgent",
+          "targetTimeline": "12 Hours",
+          "impactSessions": 937,
+          "frictionTitle": "Payment Gateway Handshake & Bank OTP Timeout",
+          "status": "In Progress"
+        }
+      ],
+      "sampleTraces": [
+        {
+          "sessionId": "03176b1efee2",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "0dbf68b0b77f",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "4825e71e0383",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "edd9cadfd477",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "e94e27d03c7a",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "8bd0dd69233b",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "93ad19727213",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        },
+        {
+          "sessionId": "4b38b6d2762e",
+          "outcome": "abandoned_friction",
+          "primaryFriction": "A_payment_otp_failure",
+          "secondaryFriction": "None",
+          "stepLocation": "payment",
+          "department": "Operational Teams"
+        }
+      ]
+    }
+  }
+}

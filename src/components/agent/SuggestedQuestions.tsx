@@ -12,26 +12,32 @@ export const SuggestedQuestions: React.FC<Props> = ({ department, onSelectQuesti
     switch (department) {
       case 'Product':
         return [
-          'Why are customers having problems with P500?',
-          'Have customers reported a similar issue before?',
-          'What product problems have we seen recently?',
+          'Why are users abandoning at forced login during checkout?',
+          'What product specification friction exists in session_labels.csv?',
+          'What is the impact of C_forced_login_long_checkout on conversion?',
         ];
       case 'Marketing':
         return [
-          'Have we seen this campaign problem before?',
-          'What happened during the previous conversion decline?',
-          'How does P500 compatibility friction impact marketing?',
+          'Why are users experiencing price shock at checkout?',
+          'What coupon validation errors were found in session analytics?',
+          'How does B_hidden_costs friction affect campaign conversions?',
         ];
       case 'Customer Service':
         return [
-          'Have we seen this complaint before?',
-          'What was the previous resolution for P500 complaints?',
-          'What support friction trends are active?',
+          'What is the ticket volume for return and refund friction (I_return_refund_friction)?',
+          'Why are support chat bots entering infinite loops (H_unresolved_support_bot_failure)?',
+          'What remediation macro is recommended for support bot escalation failures?',
+        ];
+      case 'Operational Teams':
+        return [
+          'What infrastructure issues are causing payment OTP failures (A_payment_otp_failure)?',
+          'What is the failure count for payment gateway handshakes?',
+          'What is the recommended fix for bank 3D-Secure timeout latency?',
         ];
       default:
         return [
-          'What does the organization remember about P500?',
-          'Have we seen this problem before?',
+          'What friction points were identified in session_labels.csv?',
+          'Have we seen payment OTP or checkout friction before?',
         ];
     }
   };

@@ -35,6 +35,7 @@ const INITIAL_MESSAGES: Record<Department, AgentMessage[]> = {
   Product: [],
   Marketing: [],
   'Customer Service': [],
+  'Operational Teams': [],
 };
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

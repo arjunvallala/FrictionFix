@@ -1,4 +1,4 @@
-export type Department = 'Product' | 'Marketing' | 'Customer Service';
+export type Department = 'Product' | 'Marketing' | 'Customer Service' | 'Operational Teams';
 
 export interface User {
   id: string;

@@ -7,13 +7,13 @@ export const Sidebar: React.FC = () => {
   const { activeTab, setActiveTab, currentDepartment, switchDepartment } = useApp();
 
   const navItems: { id: AppTab; label: string; icon: React.ReactNode; isFunctional?: boolean }[] = [
-    { id: 'overview', label: 'Overview', icon: <LayoutDashboard className="w-4 h-4" /> },
-    { id: 'issues', label: 'Issues', icon: <AlertCircle className="w-4 h-4" /> },
-    { id: 'tasks', label: 'Tasks', icon: <CheckSquare className="w-4 h-4" /> },
-    { id: 'memory', label: 'Memory', icon: <Database className="w-4 h-4" />, isFunctional: true },
+    { id: 'overview', label: 'Overview', icon: <LayoutDashboard className="w-4 h-4" />, isFunctional: true },
+    { id: 'issues', label: 'Issues Registry', icon: <AlertCircle className="w-4 h-4" />, isFunctional: true },
+    { id: 'tasks', label: 'Remediation Tasks', icon: <CheckSquare className="w-4 h-4" />, isFunctional: true },
+    { id: 'memory', label: 'Hindsight Memory', icon: <Database className="w-4 h-4" />, isFunctional: true },
   ];
 
-  const departments: Department[] = ['Product', 'Marketing', 'Customer Service'];
+  const departments: Department[] = ['Product', 'Marketing', 'Customer Service', 'Operational Teams'];
 
   return (
     <aside className="w-56 shrink-0 bg-[var(--color-bg-surface)] border-r border-[var(--color-border)] flex flex-col justify-between py-4 px-3 select-none transition-colors duration-200">
@@ -42,15 +42,9 @@ export const Sidebar: React.FC = () => {
                   <span>{item.label}</span>
                 </div>
 
-                {item.isFunctional ? (
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold">
-                    Active
-                  </span>
-                ) : (
-                  <span className="text-[9px] font-mono text-[var(--color-text-subtle)]">
-                    Reserved
-                  </span>
-                )}
+                <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold">
+                  Active
+                </span>
               </button>
             );
           })}
@@ -60,7 +54,7 @@ export const Sidebar: React.FC = () => {
       <div className="pt-4 border-t border-[var(--color-border-subtle)]">
         <p className="px-3 text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-subtle)] mb-2 font-medium flex items-center gap-1.5">
           <Layers className="w-3 h-3" />
-          <span>Department Context</span>
+          <span>Department Classes</span>
         </p>
 
         <div className="space-y-1">
@@ -76,9 +70,9 @@ export const Sidebar: React.FC = () => {
                     : 'text-[var(--color-text-subtle)] hover:text-[var(--color-text-muted)] hover:bg-[var(--color-bg-hover)]'
                 }`}
               >
-                <span>{dept}</span>
+                <span className="truncate">{dept}</span>
                 {isSelected && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] shrink-0" />
                 )}
               </button>
             );

@@ -21,5 +21,12 @@ export const DEMO_USERS: User[] = [
     role: 'Customer Service Lead',
     department: 'Customer Service',
     avatar: 'R'
+  },
+  {
+    id: 'user-ops-1',
+    name: 'Dev',
+    role: 'DevOps & Infrastructure Lead',
+    department: 'Operational Teams',
+    avatar: 'D'
   }
 ];

@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { DEMO_USERS } from '../../data/mockUsers';
 import type { Department, User } from '../../types';
 import { ThemeToggle } from '../ui/ThemeToggle';
-import { ArrowRight, ShieldCheck, Database, Compass } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Database, Server } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const { login } = useApp();
@@ -49,25 +49,25 @@ export const LoginPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="w-full max-w-4xl mx-auto my-auto py-12 flex flex-col items-center">
-        <div className="text-center max-w-2xl mb-12">
+      <main className="w-full max-w-5xl mx-auto my-auto py-8 flex flex-col items-center">
+        <div className="text-center max-w-2xl mb-8">
           <p className="text-xs uppercase tracking-[0.25em] text-[var(--color-text-subtle)] mb-3 font-mono">
-            Organizational Memory Architecture
+            Organizational Journey Intelligence
           </p>
           <h1 className="text-4xl sm:text-5xl font-heading font-medium tracking-tight text-[var(--color-text-main)] mb-4 leading-tight">
             One customer journey.<br />
-            Multiple departments.<br />
+            Four department classes.<br />
             <span className="italic font-serif opacity-90">One shared memory.</span>
           </h1>
           <p className="text-base text-[var(--color-text-muted)] font-body leading-relaxed max-w-lg mx-auto">
-            FRICTIONFIX integrates cross-department organizational intelligence powered by Hindsight memory recall.
+            FRICTIONFIX synthesizes user friction analytics from session recordings and connects cross-department intelligence with Hindsight memory.
           </p>
         </div>
 
         <div className="w-full mb-8">
           <div className="flex items-center justify-between mb-4 px-1">
             <h2 className="text-sm uppercase tracking-wider text-[var(--color-text-subtle)] font-mono font-medium">
-              Select Department Context
+              Select Department Class
             </h2>
             <button
               type="button"
@@ -79,40 +79,41 @@ export const LoginPage: React.FC = () => {
           </div>
 
           {!showCustomForm ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {DEMO_USERS.map((demoUser) => (
                 <button
                   key={demoUser.id}
                   onClick={() => handleSelectDemoUser(demoUser)}
-                  className="group relative flex flex-col justify-between text-left p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-elevated)] hover:border-[var(--color-text-muted)] transition-all cursor-pointer shadow-sm hover:shadow-md"
+                  className="group relative flex flex-col justify-between text-left p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-elevated)] hover:border-[var(--color-text-muted)] transition-all cursor-pointer shadow-sm hover:shadow-md"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono tracking-wide px-2 py-0.5 rounded bg-[var(--color-accent-subtle)] text-[var(--color-accent)] font-semibold">
+                      <span className="text-[10px] font-mono tracking-wide px-2 py-0.5 rounded bg-[var(--color-accent-subtle)] text-[var(--color-accent)] font-semibold truncate max-w-[140px]">
                         {demoUser.department.toUpperCase()}
                       </span>
-                      <ArrowRight className="w-4 h-4 text-[var(--color-text-subtle)] group-hover:text-[var(--color-text-main)] group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-[var(--color-text-subtle)] group-hover:text-[var(--color-text-main)] group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
 
-                    <h3 className="text-xl font-heading font-semibold text-[var(--color-text-main)] mb-1">
+                    <h3 className="text-lg font-heading font-semibold text-[var(--color-text-main)] mb-1">
                       {demoUser.department}
                     </h3>
-                    <p className="text-xs text-[var(--color-text-subtle)] mb-4">
-                      {demoUser.department === 'Product' && 'Product friction, feature compatibility, & release intelligence.'}
-                      {demoUser.department === 'Marketing' && 'Acquisition campaigns, landing copy, & conversion friction.'}
-                      {demoUser.department === 'Customer Service' && 'Ticket escalations, resolution trends, & complaint logs.'}
+                    <p className="text-xs text-[var(--color-text-subtle)] mb-4 leading-relaxed">
+                      {demoUser.department === 'Product' && 'Checkout registration, form validation & UI product specs.'}
+                      {demoUser.department === 'Marketing' && 'Price shock, promo code validation & banner transparency.'}
+                      {demoUser.department === 'Customer Service' && 'Bot escalation failures & post-purchase return friction.'}
+                      {demoUser.department === 'Operational Teams' && 'Payment gateway handshake & bank OTP latency.'}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-[var(--color-border-subtle)] flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-full bg-[var(--color-border)] flex items-center justify-center text-xs font-semibold text-[var(--color-text-main)]">
+                  <div className="pt-3 border-t border-[var(--color-border-subtle)] flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-[var(--color-border)] flex items-center justify-center text-xs font-semibold text-[var(--color-text-main)] shrink-0">
                       {demoUser.avatar}
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-[var(--color-text-main)] leading-tight">
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium text-[var(--color-text-main)] leading-tight truncate">
                         {demoUser.name}
                       </p>
-                      <p className="text-xs text-[var(--color-text-muted)]">
+                      <p className="text-[10px] text-[var(--color-text-muted)] truncate mt-0.5">
                         {demoUser.role}
                       </p>
                     </div>
@@ -127,10 +128,10 @@ export const LoginPage: React.FC = () => {
             >
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-[var(--color-text-muted)] mb-1">
-                  Department
+                  Department Class
                 </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {(['Product', 'Marketing', 'Customer Service'] as Department[]).map((dept) => (
+                <div className="grid grid-cols-2 gap-2">
+                  {(['Product', 'Marketing', 'Customer Service', 'Operational Teams'] as Department[]).map((dept) => (
                     <button
                       type="button"
                       key={dept}
@@ -192,18 +193,18 @@ export const LoginPage: React.FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
-            <span>Cross-Department Grounded AI</span>
+            <span>34,523 Session Traces Analyzed</span>
           </div>
           <div className="flex items-center gap-2">
-            <Compass className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
-            <span>Pluggable Shell Architecture</span>
+            <Server className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
+            <span>4 Department Classes</span>
           </div>
         </div>
       </main>
 
       <footer className="w-full max-w-6xl mx-auto pt-6 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--color-text-subtle)] gap-2">
         <p>© 2026 FRICTIONFIX. Built for TCS AIML Hackathon.</p>
-        <p className="font-mono">Phase 1: Shell + Hindsight AI Agent Foundation</p>
+        <p className="font-mono">session_labels.csv Classification Architecture</p>
       </footer>
     </div>
   );

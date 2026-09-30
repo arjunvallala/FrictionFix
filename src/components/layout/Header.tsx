@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
   const { currentUser, currentDepartment, currentRole, systemStatus, switchDepartment, logout } = useApp();
   const [showDeptMenu, setShowDeptMenu] = useState(false);
 
-  const departments: Department[] = ['Product', 'Marketing', 'Customer Service'];
+  const departments: Department[] = ['Product', 'Marketing', 'Customer Service', 'Operational Teams'];
 
   return (
     <header className="h-16 w-full bg-[var(--color-bg-surface)] border-b border-[var(--color-border)] px-6 flex items-center justify-between z-30 transition-colors duration-200">
@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
           </button>
 
           {showDeptMenu && (
-            <div className="absolute right-0 mt-2 w-56 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] shadow-lg py-2 z-50">
+            <div className="absolute right-0 mt-2 w-64 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] shadow-lg py-2 z-50">
               <div className="px-3 py-1.5 border-b border-[var(--color-border-subtle)]">
                 <p className="text-[10px] font-mono uppercase text-[var(--color-text-subtle)]">Switch Department Context</p>
               </div>
