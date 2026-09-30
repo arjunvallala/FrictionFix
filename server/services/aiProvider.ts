@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { Memory, StructuredAnswer, Department } from '../../src/types';
+import type { Memory, StructuredAnswer, Department } from '../../src/types';
 import { CONFIG } from '../config';
 
 export interface AIProviderParams {
@@ -39,7 +39,7 @@ You MUST return your response ONLY as a JSON object with this exact schema:
 Do NOT wrap in markdown backticks or extra text outside JSON if possible. Make sure your observations directly cite numbers and evidence from the memories.`;
 
 export class GeminiProvider implements IAIProvider {
-  public name = 'Gemini';
+  public name = 'Gemini 2.5 Flash';
   private ai: GoogleGenAI | null = null;
 
   constructor() {
@@ -87,7 +87,7 @@ Please generate the grounded response adhering to the system prompt JSON format.
 }
 
 export class OpenAIProvider implements IAIProvider {
-  public name = 'OpenAI';
+  public name = 'OpenAI GPT-4o-mini';
 
   async generateResponse(params: AIProviderParams): Promise<StructuredAnswer> {
     if (!CONFIG.OPENAI_API_KEY) {
@@ -110,6 +110,7 @@ export class OpenAIProvider implements IAIProvider {
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: `Department: ${params.department}\nQuestion: ${params.question}\nMemories:\n${memoriesText}` }
         ],
+        response_format: { type: 'json_object' },
         temperature: 0.2,
       }),
     });
@@ -125,7 +126,7 @@ export class OpenAIProvider implements IAIProvider {
 }
 
 export class GroqProvider implements IAIProvider {
-  public name = 'Groq';
+  public name = 'Groq (Llama-3.3-70B)';
 
   async generateResponse(params: AIProviderParams): Promise<StructuredAnswer> {
     if (!CONFIG.GROQ_API_KEY) {
@@ -148,12 +149,14 @@ export class GroqProvider implements IAIProvider {
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: `Department: ${params.department}\nQuestion: ${params.question}\nMemories:\n${memoriesText}` }
         ],
+        response_format: { type: 'json_object' },
         temperature: 0.2,
       }),
     });
 
     if (!res.ok) {
-      throw new Error(`Groq API returned error ${res.status}`);
+      const errText = await res.text();
+      throw new Error(`Groq API returned error ${res.status}: ${errText}`);
     }
 
     const data = await res.json();
@@ -166,17 +169,12 @@ export class MockAIProvider implements IAIProvider {
   public name = 'Demo Memory LLM';
 
   async generateResponse(params: AIProviderParams): Promise<StructuredAnswer> {
-    // Artificial slight delay for realistic processing feel
     await new Promise(r => setTimeout(r, 600));
 
     const { question, department, memories } = params;
     const qLower = question.toLowerCase();
 
-    // Check for P500 specific question
     if (qLower.includes('p500') || qLower.includes('compatibility')) {
-      const p500CS = memories.find(m => m.department === 'Customer Service');
-      const p500Prod = memories.find(m => m.department === 'Product');
-
       if (department === 'Product') {
         return {
           summary: 'Recent organizational memory confirms that P500 has experienced recurring compatibility friction during legacy API integrations.',
@@ -213,7 +211,6 @@ export class MockAIProvider implements IAIProvider {
           historicalContext: 'In May 2026, product documentation updates alleviated support load, but campaign messaging was not synchronized at that time.'
         };
       } else {
-        // Customer Service
         return {
           summary: 'Customer Service records show a 137-ticket spike in P500 compatibility complaints following the v4.2 update.',
           observed: [
@@ -233,7 +230,6 @@ export class MockAIProvider implements IAIProvider {
       }
     }
 
-    // Campaign or conversion query
     if (qLower.includes('conversion') || qLower.includes('campaign')) {
       return {
         summary: `Organizational memory shows a recent 18% conversion drop linked to Q3 growth campaign copy testing.`,
@@ -253,7 +249,6 @@ export class MockAIProvider implements IAIProvider {
       };
     }
 
-    // General fallback grounded response
     const obsList = memories.map(m => `[${m.department}] ${m.entity}: ${m.observation} (${m.evidence})`);
     return {
       summary: `Based on ${memories.length} organizational memories retrieved for ${department}, several historical patterns were identified.`,
@@ -275,7 +270,6 @@ export class MockAIProvider implements IAIProvider {
 
 function parseJSONAnswer(text: string, params: AIProviderParams): StructuredAnswer {
   try {
-    // Remove markdown block backticks if present
     const cleaned = text.replace(/```json/gi, '').replace(/```/g, '').trim();
     const parsed = JSON.parse(cleaned);
     return {
@@ -286,7 +280,6 @@ function parseJSONAnswer(text: string, params: AIProviderParams): StructuredAnsw
       historicalContext: parsed.historicalContext || 'Historical context available in memory sources.',
     };
   } catch (err) {
-    // Fallback parser if JSON generation was non-standard
     return {
       summary: text.slice(0, 200) + '...',
       observed: params.memories.map(m => m.observation),
@@ -308,6 +301,5 @@ export function getAIProvider(): IAIProvider {
     return new GroqProvider();
   }
 
-  // Fallback to Mock AI Provider
   return new MockAIProvider();
 }

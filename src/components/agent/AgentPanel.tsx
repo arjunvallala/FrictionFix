@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { AgentMessage } from './AgentMessage';
 import { SuggestedQuestions } from './SuggestedQuestions';
-import { Send, Bot, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Send, Bot, ChevronRight, ChevronLeft, Cpu } from 'lucide-react';
 
 export const AgentPanel: React.FC = () => {
   const { currentDepartment, messages, sendAgentQuery, isLoadingAgent, systemStatus } = useApp();
@@ -60,8 +60,9 @@ export const AgentPanel: React.FC = () => {
               {currentDepartment}
             </span>
           </div>
-          <p className="text-[11px] text-[var(--color-text-subtle)] font-body">
-            Search organizational memory
+          <p className="text-[11px] text-[var(--color-text-subtle)] font-body flex items-center gap-1 mt-0.5">
+            <Cpu className="w-3 h-3 text-[var(--color-accent)]" />
+            <span>Model: <strong>{systemStatus.configuredProvider}</strong></span>
           </p>
         </div>
 
@@ -131,8 +132,8 @@ export const AgentPanel: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between text-[9px] font-mono text-[var(--color-text-subtle)] px-1">
-            <span>Context: {currentDepartment} Memory</span>
-            <span>{systemStatus.hindsightConnected ? 'Hindsight Live' : 'Demo Mode'}</span>
+            <span>LLM: {systemStatus.configuredProvider}</span>
+            <span>{systemStatus.hindsightConnected ? 'Hindsight Live' : 'Demo Memory'}</span>
           </div>
         </form>
       </div>
