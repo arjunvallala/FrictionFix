@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Alegreya', Georgia, serif;
+    --font-body: 'Gentium Plus', Georgia, serif;
+
+    /* Light Theme (Warm Off-white / Ivory, Editorial, Sophisticated) */
+    --color-bg-base: #F9F8F5;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-elevated: #F3F1EC;
+    --color-bg-hover: #ECEAE4;
+    --color-border: #E4E1D8;
+    --color-border-subtle: #ECE9E1;
+    --color-text-main: #1C1B18;
+    --color-text-muted: #62605B;
+    --color-text-subtle: #8C8982;
+    --color-accent: #2C3E35;
+    --color-accent-hover: #1E2C25;
+    --color-accent-subtle: #EBEFEA;
+    --color-accent-border: #9BB0A5;
+    
+    --color-observed-bg: #F0F5F2;
+    --color-observed-border: #A3C4B3;
+    --color-observed-text: #1B4332;
+
+    --color-inferred-bg: #F5F3EF;
+    --color-inferred-border: #D4C9B8;
+    --color-inferred-text: #4A3E2C;
+
+    --color-recommended-bg: #EEF4F8;
+    --color-recommended-border: #9EC0D6;
+    --color-recommended-text: #1B3B52;
+  }
+
+  .dark {
+    /* Dark Theme (Deep Charcoal / Warm Dark, Premium Enterprise) */
+    --color-bg-base: #121315;
+    --color-bg-surface: #181A1D;
+    --color-bg-elevated: #212428;
+    --color-bg-hover: #292C32;
+    --color-border: #2B2E34;
+    --color-border-subtle: #23252A;
+    --color-text-main: #E8E6E2;
+    --color-text-muted: #9E9C96;
+    --color-text-subtle: #6D6B65;
+    --color-accent: #4A6356;
+    --color-accent-hover: #5A7768;
+    --color-accent-subtle: #1C2621;
+    --color-accent-border: #3A4F44;
+
+    --color-observed-bg: #15221C;
+    --color-observed-border: #2A473A;
+    --color-observed-text: #A8E0C5;
+
+    --color-inferred-bg: #22201C;
+    --color-inferred-border: #423C32;
+    --color-inferred-text: #E5D5BC;
+
+    --color-recommended-bg: #16222C;
+    --color-recommended-border: #2A4559;
+    --color-recommended-text: #A7CDDF;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-subtle);
+}
